@@ -1,13 +1,14 @@
 function login() {
   FB.login(function(response) {
     if (response.status == 'connected') {
+      $("#loginBtn").hide();
       showListings();
     }
   })
 }
 function showListings() {
   FB.api(
-    "/467223920343518/feed?limit=100",
+    "/467223920343518/feed?limit=100&fields=from",
     function (response) {
       if (response && !response.error) {
         response.data.map(function(listing) {
@@ -17,21 +18,21 @@ function showListings() {
             var desc = listing.message.split(/\r?\n/)[3];
 
             var apiAddress = address.split(' ').join('+');
-            var html = "<div class = \'container\'> " +
+            var html = "<div class = \'row\'> " +
                           "<div class = \'col-md-6\'> " +
                             "<h2> " + address + " - " + price + "</h2> " +
                             "<h3>" + desc + "</h3> " +
                           "</div> " +
                           "<div class = \'col-md-6\'> " +
                             "<iframe " +
-                              "width=\"600\" " +
-                              "height=\"450\" " +
+                              "width=\"400\" " +
+                              "height=\"400\" " +
                               "frameborder=\"0\" style=\"border:0\" " +
                               "src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyCx8NsG_fJqJNWEtcnt5Wgy14x1B0ds8Ic" +
-                                "&q=" + apiAddress + " allowfullscreen> " +
+                                "&q=" + apiAddress + "\" allowfullscreen> " +
                             "</iframe> " +
                           "</div> " +
-                        "</div> ";
+                        "</div> <br> <br>";
               $("#listings").append(html);
             }
         });
