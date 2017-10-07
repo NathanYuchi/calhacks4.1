@@ -1,10 +1,10 @@
 <head>
-  <script type="text/javascript" src="./js/bootstrap.js"></script>
   <script type="text/javascript" src="./js/jquery-3.2.1.min.js"></script>
+  <script type="text/javascript" src="./js/bootstrap.js"></script>
   <script type="text/javascript" src="./js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="./js/main.js"></script>
+  <script type="text/javascript" src="./js/home.js"></script>
 
-  <link rel="Stylesheet" type="text/css" href="./css/main.css" />
+  <link rel="Stylesheet" type="text/css" href="./css/home.css" />
   <link rel="Stylesheet" type="text/css" href="./css/bootstrap.css" />
   <link rel="Stylesheet" type="text/css" href="./css/bootstrap.min.css" />
   <link rel="Stylesheet" type="text/css" href="./css/bootstrap-grid.css" />
@@ -14,6 +14,16 @@
 </head>
 
 <body>
+  <div id="fb-root"></div>
+  <script>
+    (function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.10&appId=375220902820299";
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));
+  </script>
   <!-- Navigation -->
 <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
   <div class="container">
@@ -38,35 +48,16 @@
 </nav>
 
 <!-- Header -->
-   <header class="intro-header">
-     <div class="container">
-       <div class="intro-message">
-         <h1>Landing Page</h1>
-         <h3>A Template by Start Bootstrap</h3>
-         <hr class="intro-divider">
-         <ul class="list-inline intro-social-buttons">
-           <li class="list-inline-item">
-             <a href="#" class="btn btn-secondary btn-lg">
-               <i class="fa fa-twitter fa-fw"></i>
-               <span class="network-name">Twitter</span>
-             </a>
-           </li>
-           <li class="list-inline-item">
-             <a href="#" class="btn btn-secondary btn-lg">
-               <i class="fa fa-github fa-fw"></i>
-               <span class="network-name">Github</span>
-             </a>
-           </li>
-           <li class="list-inline-item">
-             <a href="#" class="btn btn-secondary btn-lg">
-               <i class="fa fa-linkedin fa-fw"></i>
-               <span class="network-name">Linkedin</span>
-             </a>
-           </li>
-         </ul>
-       </div>
-     </div>
-   </header>
-
-
+    <header class="intro-header">
+      <div class="container">
+        <div class="intro-message">
+          <h1>Landing Page</h1>
+          <h3>A Template by Start Bootstrap</h3>
+          <hr class="intro-divider">
+          <ul class="list-inline intro-social-buttons">
+            <div class="fb-login-button" data-width="40" data-max-rows="10" data-size="large" data-button-type="continue_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="false"></div>
+          </ul>
+        </div>
+      </div>
+    </header>
 </body>
