@@ -11,7 +11,7 @@ function showListings() {
     function (response) {
       if (response && !response.error) {
         response.data.map(function(listing) {
-          if (listing.message != null) {
+          if (listing.message) {
             var address = listing.message.split(/\r?\n/)[0].replace(/\b\w/g, l => l.toUpperCase());
             var price = listing.message.split(/\r?\n/)[1].split(" ")[0];
             var desc = listing.message.split(/\r?\n/)[3];
