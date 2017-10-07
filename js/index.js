@@ -22,6 +22,13 @@ function showListings() {
                           "<h3>" + desc + "</h3>" +
                         "</div>" +
                         "<div class = \'col-md-6\'>" +
+                          "<iframe" +
+                            "width=\"600\"" +
+                            "height=\"450\""
+                            "frameborder=\"0\" style=\"border:0\"" +
+                            "src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyCMC_RzdmMB3AH0MXEu8OcedoD3P9Ik9uY" +
+                              "&q=" + address + " allowfullscreen>" +
+                          "</iframe>" +
                         "</div>" +
                       "</div>";
 
