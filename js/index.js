@@ -7,7 +7,7 @@ function login() {
 }
 function showMeme() {
   FB.api(
-    "/375220902820299/feed?limit=100",
+    "/467223920343518/feed?limit=100",
     function (response) {
       if (response && !response.error) {
         response.data.map(function(meme) {
