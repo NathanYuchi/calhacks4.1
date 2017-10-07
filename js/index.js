@@ -16,6 +16,7 @@ function showListings() {
             var price = listing.message.split(/\r?\n/)[1].split(" ")[0];
             var desc = listing.message.split(/\r?\n/)[3];
 
+            var apiAddress = address.split(' ').join('+');
             var html = "<div class = \'container\'> " +
                           "<div class = \'col-md-6\'> " +
                             "<h2> " + address + " - " + price + "</h2> " +
@@ -26,11 +27,12 @@ function showListings() {
                               "width=\"600\" " +
                               "height=\"450\" " +
                               "frameborder=\"0\" style=\"border:0\" " +
-                              "src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyCMC_RzdmMB3AH0MXEu8OcedoD3P9Ik9uY" +
-                                "&q=" + address + " allowfullscreen> " +
+                              "src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyCx8NsG_fJqJNWEtcnt5Wgy14x1B0ds8Ic" +
+                                "&q=" + apiAddress + " allowfullscreen> " +
                             "</iframe> " +
                           "</div> " +
                         "</div> ";
+              $("#listings").append(html);
             }
         });
       }
