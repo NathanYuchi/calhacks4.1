@@ -2,6 +2,7 @@ var middleLat = 37.871531;
 
 $( document ).ready(function() {
   $("#filter").hide();
+  $("#bar").hide();
 });
 
 function filter() {
@@ -13,6 +14,7 @@ function filter() {
   showListings();
 }
 function login() {
+  localStorage.clear();
   FB.login(function(response) {
     if (response.status == 'connected') {
       $("#loginBtn").hide();
@@ -23,6 +25,7 @@ function login() {
   })
 }
 function showListings() {
+  $("#bar").show();
   $("#listings").empty();
   FB.api(
     "/467223920343518/feed?limit=100&fields=from,message,id",
@@ -44,7 +47,7 @@ function showListings() {
             var apiAddress = address.split(' ').join('+');
             var lattitude = getLattitude(apiAddress);
             if ((currLoc === "1" && (lattitude >= middleLat)) || (currLoc === "2" && (lattitude <= middleLat)) || (currLoc === "0")) {
-              if ((currPrice === "1" && priceNum <= 750) || (currPrice === "2" && priceNum <= 1000 && priceNum >= 750) || (currPrice === "3" && priceNum <= 1500 && priceNum >= 1000) || (currPrice === "4" && priceNum >= 1500) || (currPrice === "0")){
+              if ((currPrice === "1" && priceNum < 750) || (currPrice === "2" && priceNum <= 1000 && priceNum >= 750) || (currPrice === "3" && priceNum <= 1500 && priceNum >= 1000) || (currPrice === "4" && priceNum >= 1500) || (currPrice === "0")){
                 var html = "<div class = \'row\'> " +
                               "<div class = \'col-md-6\'> " +
                                 "<div class = \"col-sm-9\">" +
