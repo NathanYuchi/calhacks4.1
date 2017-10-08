@@ -35,8 +35,8 @@ function showListings() {
             var id = listing.id.split("_")[1];
             var link = "https://www.facebook.com/groups/467223920343518/permalink/"+id;
 
-            var currLoc = storage.getItem('loc');
-            var currPrice = storage.getItem('price')
+            var currLoc = localStorage.getItem('loc');
+            var currPrice = localStorage.getItem('price')
 
             var apiAddress = address.split(' ').join('+');
             var html = "<div class = \'row\'> " +
