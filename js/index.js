@@ -1,4 +1,4 @@
-var middleLat = 37.52;
+var middleLat = 37.871531;
 
 $( document ).ready(function() {
   $("#filter").hide();
@@ -38,34 +38,37 @@ function showListings() {
 
             var currLoc = localStorage.getItem('loc');
             var currPrice = localStorage.getItem('price')
+            var priceNum = Number(price.replace(/[^0-9\.-]+/g,""));
 
 
             var apiAddress = address.split(' ').join('+');
             var lattitude = getLattitude(apiAddress);
-            if (currLoc === "1" && (lattitude <= middleLat) || (currLoc === "2" && (lattitude >= middleLat))) {
-              var html = "<div class = \'row\'> " +
-                            "<div class = \'col-md-6\'> " +
-                              "<div class = \"col-sm-9\">" +
-                                "<h3> " + address + " - " + price + "</h3> " +
-                                "<h4>" + desc + "</h4> " +
-                              "</div>" +
-                              "<div class = \"col-sm-3\">" +
-                                "<a href=\"" + link +"\" class=\"btn btn-primary\" role=\"button\" target=\"_blank\">Link to Posting</a>" +
-                              "</div>" +
-                            "</div> " +
-                            "<div class = \'col-md-6\'> " +
-                              "<iframe " +
-                                "width=\"400\" " +
-                                "height=\"400\" " +
-                                "frameborder=\"0\" style=\"border:0\" " +
-                                "src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyCx8NsG_fJqJNWEtcnt5Wgy14x1B0ds8Ic" +
-                                  "&q=" + apiAddress + "\" allowfullscreen> " +
-                              "</iframe> " +
-                            "</div> " +
-                            "<hr class=\"section-heading-spacer\"> " +
-                            "<div class=\"clearfix\"> </div> " +
-                          "</div> <br> <br>";
-                $("#listings").append(html);
+            if ((currLoc === "1" && (lattitude >= middleLat)) || (currLoc === "2" && (lattitude <= middleLat)) || (currLoc === "0")) {
+              if ((currPrice === "1" && priceNum <= 750) || (currPrice === "2" && priceNum <= 1000) || (currPrice === "3" && priceNum <= 1500) || (currPrice === "4" && priceNum >= 1000) || (currPrice === "0")){
+                var html = "<div class = \'row\'> " +
+                              "<div class = \'col-md-6\'> " +
+                                "<div class = \"col-sm-9\">" +
+                                  "<h3> " + address + " - " + price + "</h3> " +
+                                  "<h4>" + desc + "</h4> " +
+                                "</div>" +
+                                "<div class = \"col-sm-3\">" +
+                                  "<a href=\"" + link +"\" class=\"btn btn-primary\" role=\"button\" target=\"_blank\">Link to Posting</a>" +
+                                "</div>" +
+                              "</div> " +
+                              "<div class = \'col-md-6\'> " +
+                                "<iframe " +
+                                  "width=\"400\" " +
+                                  "height=\"400\" " +
+                                  "frameborder=\"0\" style=\"border:0\" " +
+                                  "src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyCx8NsG_fJqJNWEtcnt5Wgy14x1B0ds8Ic" +
+                                    "&q=" + apiAddress + "\" allowfullscreen> " +
+                                "</iframe> " +
+                              "</div> " +
+                              "<hr class=\"section-heading-spacer\"> " +
+                              "<div class=\"clearfix\"> </div> " +
+                            "</div> <br> <br>";
+                  $("#listings").append(html);
+                }
               }
             }
         });
