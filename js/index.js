@@ -1,7 +1,13 @@
+$( document ).ready(function() {
+  $("#filter").hide();
+});
+
 function login() {
   FB.login(function(response) {
     if (response.status == 'connected') {
       $("#loginBtn").hide();
+
+        $("#filter").show();
       showListings();
     }
   })
@@ -11,7 +17,6 @@ function showListings() {
     "/467223920343518/feed?limit=100&fields=from,message",
     function (response) {
       if (response && !response.error) {
-        $("#hero").hide();
         response.data.map(function(listing) {
           if (listing.message) {
             var address = listing.message.split(/\r?\n/)[0].replace(/\b\w/g, l => l.toUpperCase());
@@ -33,6 +38,8 @@ function showListings() {
                                 "&q=" + apiAddress + "\" allowfullscreen> " +
                             "</iframe> " +
                           "</div> " +
+                          "<hr class=\"section-heading-spacer\">" +
+                          "<div class=\"clearfix\"> </div> " +
                         "</div> <br> <br>";
               $("#listings").append(html);m
             }

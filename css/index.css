@@ -78,7 +78,7 @@ header.masthead {
   min-height: auto;
   text-align: center;
   color: white;
-  background-image: url("../images/poopoo.jpg");
+  background-image: url("./images/poopoo.jpg");
   background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -124,3 +124,13 @@ header.masthead {
             max-width: 80%;
             margin-right: auto;
             margin-left: auto; } }
+
+.section-heading {
+  margin-bottom: 30px;
+}
+
+.section-heading-spacer {
+  float: left;
+  width: 200px;
+  border-top: 3px solid #e7e7e7;
+}

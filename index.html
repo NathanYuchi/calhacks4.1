@@ -44,7 +44,37 @@
       </div>
     </div>
   </header>
+  
+  <div class = "container" id = "filter" >
+    <div class = "row" id = "filterRow">
+      <div class = "col-md-4">
+        <div class="form-group">
+    <label for="priceSelect">Pricing (per Month)</label>
+    <select class="form-control" id="priceSelect">
+        <option>No Preference</option>
+        <option> Less than 750</option>
+        <option> 750 - 1000</option>
+        <option> 1000 - 1500</option>
+        <option> 1500+ </option>
+    </select>
+  </div>
+      </div>
+      <div class = "col-md-4">
+        <div class="form-group">
+          <label for="locSelect">Location</label>
+          <select class="form-control" id="locSelect">
+            <option>No Preference</option>
+            <option>Northside</option>
+            <option>Soutside</option>
+          </select>
+        </div>
+      </div>
+      <div class = "col-md-4">
+        <button type="button" class="btn btn-primary" id ="filterBtn" onclick="filter()">Filter</button>
+      </div>
+    </div>
 
+  </div>
   <div class = "container" id = "listings">
 
   </div>
