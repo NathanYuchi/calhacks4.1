@@ -44,7 +44,7 @@ function showListings() {
             var apiAddress = address.split(' ').join('+');
             var lattitude = getLattitude(apiAddress);
             if ((currLoc === "1" && (lattitude >= middleLat)) || (currLoc === "2" && (lattitude <= middleLat)) || (currLoc === "0")) {
-              if ((currPrice === "1" && priceNum <= 750) || (currPrice === "2" && priceNum <= 1000) || (currPrice === "3" && priceNum <= 1500) || (currPrice === "4" && priceNum >= 1000) || (currPrice === "0")){
+              if ((currPrice === "1" && priceNum <= 750) || (currPrice === "2" && priceNum <= 1000 && priceNum >= 750) || (currPrice === "3" && priceNum <= 1500 && priceNum >= 1000) || (currPrice === "4" && priceNum >= 1500) || (currPrice === "0")){
                 var html = "<div class = \'row\'> " +
                               "<div class = \'col-md-6\'> " +
                                 "<div class = \"col-sm-9\">" +
