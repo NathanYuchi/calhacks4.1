@@ -1,11 +1,12 @@
+var middleLat = 37.52;
+
 $( document ).ready(function() {
   $("#filter").hide();
 });
 
-
 function filter() {
-  var selectedLoc = $('#locSelect').find("option:selected");
-  var selectedprice = $('#priceSelect').find("option:selected");
+  var selectedLoc = $('#locSelect').val();
+  var selectedprice = $('#priceSelect').val();
 
   localStorage.setItem('loc', selectedLoc);
   localStorage.setItem('price', selectedprice);
@@ -38,7 +39,10 @@ function showListings() {
             var currLoc = localStorage.getItem('loc');
             var currPrice = localStorage.getItem('price')
 
+
             var apiAddress = address.split(' ').join('+');
+            var lattitude = getLattitude(apiAddress);
+
             var html = "<div class = \'row\'> " +
                           "<div class = \'col-md-6\'> " +
                             "<div class = \"col-sm-9\">" +
@@ -67,4 +71,24 @@ function showListings() {
       }
     }
   );
+}
+
+function getLattitude(address) {
+
+	var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address
+
+    var lattitude= 0;
+
+    $.ajax({
+        url: url,
+        type: "GET",
+        async: false,
+        headers: { "Accept": "application/json;odata=verbose"}, // return data format
+        success: function (data) {
+         console.log(data);
+        },
+        error: function (error) {
+        }
+    });
+    return lattitude;
 }
