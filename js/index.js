@@ -6,7 +6,7 @@ function login() {
   FB.login(function(response) {
     if (response.status == 'connected') {
       $("#loginBtn").hide();
-
+      $('#hero').hide();
         $("#filter").show();
       showListings();
     }
@@ -26,8 +26,8 @@ function showListings() {
             var apiAddress = address.split(' ').join('+');
             var html = "<div class = \'row\'> " +
                           "<div class = \'col-md-6\'> " +
-                            "<h2> " + address + " - " + price + "</h2> " +
-                            "<h3>" + desc + "</h3> " +
+                            "<h3> " + address + " - " + price + "</h3> " +
+                            "<h4>" + desc + "</h4> " +
                           "</div> " +
                           "<div class = \'col-md-6\'> " +
                             "<iframe " +
@@ -38,10 +38,10 @@ function showListings() {
                                 "&q=" + apiAddress + "\" allowfullscreen> " +
                             "</iframe> " +
                           "</div> " +
-                          "<hr class=\"section-heading-spacer\">" +
+                          "<hr class=\"section-heading-spacer\"> " +
                           "<div class=\"clearfix\"> </div> " +
                         "</div> <br> <br>";
-              $("#listings").append(html);m
+              $("#listings").append(html);
             }
         });
       }

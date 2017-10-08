@@ -34,17 +34,17 @@
      }(document, 'script', 'facebook-jssdk'));
   </script>
 
-  <header class="masthead">
+  <header class="masthead" id = "hero">
     <div class="header-content">
       <div class="header-content-inner">
         <h1 id="homeHeading">Live Cal</h1>
         <hr>
-        <p>Find Your Home at Berkeley</p>
+        <h2>Find Your Home at Berkeley</h2>
         <button type="button" class="btn btn-primary" id ="loginBtn" onclick="login()">Login to Facebook to continue</button>
       </div>
     </div>
   </header>
-  
+
   <div class = "container" id = "filter" >
     <div class = "row" id = "filterRow">
       <div class = "col-md-4">
@@ -52,10 +52,10 @@
     <label for="priceSelect">Pricing (per Month)</label>
     <select class="form-control" id="priceSelect">
         <option>No Preference</option>
-        <option> Less than 750</option>
-        <option> 750 - 1000</option>
-        <option> 1000 - 1500</option>
-        <option> 1500+ </option>
+        <option> Less than $750</option>
+        <option> $750 - $1000</option>
+        <option> $1000 - $1500</option>
+        <option> $1500+ </option>
     </select>
   </div>
       </div>

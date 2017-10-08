@@ -6,10 +6,6 @@ html {
 body {
   font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif; }
 
-hr {
-  max-width: 50px;
-  border-width: 3px;
-  border-color: #F05F40; }
 
 hr.light {
   border-color: white; }
@@ -29,7 +25,6 @@ h4,
 h5,
 h6 {
   font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif; }
-
 p {
   font-size: 16px;
   line-height: 1.5;
@@ -78,7 +73,7 @@ header.masthead {
   min-height: auto;
   text-align: center;
   color: white;
-  background-image: url("./images/poopoo.jpg");
+  background-image: url("../images/poopoo.jpg");
   background-position: center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -90,15 +85,14 @@ header.masthead {
     padding: 150px 15px 100px;
     text-align: center; }
     header.masthead .header-content .header-content-inner h1 {
-      font-size: 30px;
+      font-size: 80px;
       font-weight: 700;
       margin-top: 0;
-      margin-bottom: 0;
-      text-transform: uppercase; }
+      margin-bottom: 0; }
     header.masthead .header-content .header-content-inner hr {
       margin: 30px auto; }
     header.masthead .header-content .header-content-inner p {
-      font-size: 16px;
+      font-size: 40px;
       font-weight: 300;
       margin-bottom: 50px;
       color: rgba(255, 255, 255, 0.7); }
