@@ -14,7 +14,6 @@ function filter() {
   showListings();
 }
 function login() {
-  localStorage.clear();
   FB.login(function(response) {
     if (response.status == 'connected') {
       $("#loginBtn").hide();
@@ -71,6 +70,7 @@ function showListings() {
                               "<div class=\"clearfix\"> </div> " +
                             "</div> <br> <br>";
                   $("#listings").append(html);
+                  localStorage.clear();
                 }
               }
             }
