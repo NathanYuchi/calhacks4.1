@@ -22,7 +22,7 @@ function login() {
   })
 }
 function showListings() {
-  $("#listings").clear();
+  $("#listings").empty();
   FB.api(
     "/467223920343518/feed?limit=100&fields=from,message,id",
     function (response) {
