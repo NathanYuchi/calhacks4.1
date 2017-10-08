@@ -43,8 +43,23 @@ function showListings() {
 
             var apiAddress = address.split(' ').join('+');
             var lattitude = getLattitude(apiAddress);
+            var longitude = getLongitude(apiAddress);
             if ((currLoc === "1" && (lattitude >= middleLat)) || (currLoc === "2" && (lattitude <= middleLat)) || (currLoc === "0")) {
               if ((currPrice === "1" && priceNum <= 750) || (currPrice === "2" && priceNum <= 1000 && priceNum >= 750) || (currPrice === "3" && priceNum <= 1500 && priceNum >= 1000) || (currPrice === "4" && priceNum >= 1500) || (currPrice === "0")){
+  
+                  /*
+  "<iframe " +
+                                  "width=\"400\" " +
+                                  "height=\"400\" " +
+                                  "frameborder=\"0\" style=\"border:0\" " +
+                                  "src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyCx8NsG_fJqJNWEtcnt5Wgy14x1B0ds8Ic" +
+                                    "&q=" + apiAddress + "\" allowfullscreen> " +
+                                "</iframe> " +                
+                  */
+                  var script = document.createElement( 'script' );
+                  script.type = 'text/javascript';
+                  script.src = "https://cdn-webgl.wrld3d.com/wrldjs/dist/latest/wrld.js\";
+                  $("#listings").append( script );
                 var html = "<div class = \'row\'> " +
                               "<div class = \'col-md-6\'> " +
                                 "<div class = \"col-sm-9\">" +
@@ -55,14 +70,13 @@ function showListings() {
                                   "<a href=\"" + link +"\" class=\"btn btn-primary\" role=\"button\" target=\"_blank\">Link to Posting</a>" +
                                 "</div>" +
                               "</div> " +
+                              
                               "<div class = \'col-md-6\'> " +
-                                "<iframe " +
-                                  "width=\"400\" " +
-                                  "height=\"400\" " +
-                                  "frameborder=\"0\" style=\"border:0\" " +
-                                  "src=\"https://www.google.com/maps/embed/v1/place?key=AIzaSyCx8NsG_fJqJNWEtcnt5Wgy14x1B0ds8Ic" +
-                                    "&q=" + apiAddress + "\" allowfullscreen> " +
-                                "</iframe> " +
+                                  "<div id=\"map\" style=\"height: 250px\"></div>" +
+                                  "<script> L.Wrld.map(\"map\", \"f57ea8fe1f517d00728d159b1dcbd87c\", {" +
+                                    "center: [" + lattitude + ", " + longitude + "]," +
+                                        "zoom: 16" +
+                                    "});</script>" +
                               "</div> " +
                               "<hr class=\"section-heading-spacer\"> " +
                               "<div class=\"clearfix\"> </div> " +
@@ -95,4 +109,23 @@ function getLattitude(address) {
         }
     });
     return lattitude;
+}
+function getLongitude(address) {
+
+	var url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + address
+
+    var longitude = 0;
+
+    $.ajax({
+        url: url,
+        type: "GET",
+        async: false,
+        headers: { "Accept": "application/json;odata=verbose"}, // return data format
+        success: function (data) {
+         lattitude = data.results[0].geometry.location.lng;
+        },
+        error: function (error) {
+        }
+    });
+    return longitude;
 }
