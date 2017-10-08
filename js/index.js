@@ -8,9 +8,10 @@ function login() {
 }
 function showListings() {
   FB.api(
-    "/467223920343518/feed?limit=100&fields=from",
+    "/467223920343518/feed?limit=100&fields=from,message",
     function (response) {
       if (response && !response.error) {
+        $("#hero").hide();
         response.data.map(function(listing) {
           if (listing.message) {
             var address = listing.message.split(/\r?\n/)[0].replace(/\b\w/g, l => l.toUpperCase());
@@ -33,7 +34,7 @@ function showListings() {
                             "</iframe> " +
                           "</div> " +
                         "</div> <br> <br>";
-              $("#listings").append(html);
+              $("#listings").append(html);m
             }
         });
       }
