@@ -1,15 +1,16 @@
 $( document ).ready(function() {
   $("#filter").hide();
 });
-$('#priceSelect').change(function () {
-    var selected = $(this).find("option:selected");
-    localStorage.setItem('price', selected);
 
-});
-$('#locSelect').change(function () {
-    var selected = $(this).find("option:selected");
-    localStorage.setItem('loc', selected);
-});
+
+function filter() {
+  var selectedLoc = $('#locSelect').find("option:selected");
+  var selectedprice = $('#priceSelect').find("option:selected");
+
+  localStorage.setItem('loc', selectedLoc);
+  localStorage.setItem('price', selectedprice);
+  showListings();
+}
 function login() {
   FB.login(function(response) {
     if (response.status == 'connected') {
@@ -21,6 +22,7 @@ function login() {
   })
 }
 function showListings() {
+  $("#listings").clear();
   FB.api(
     "/467223920343518/feed?limit=100&fields=from,message,id",
     function (response) {
@@ -30,17 +32,20 @@ function showListings() {
             var address = listing.message.split(/\r?\n/)[0].replace(/\b\w/g, l => l.toUpperCase());
             var price = listing.message.split(/\r?\n/)[1].split(" ")[0];
             var desc = listing.message.split(/\r?\n/)[3];
-            var id = listing.id;
+            var id = listing.id.split("_")[1];
             var link = "https://www.facebook.com/groups/467223920343518/permalink/"+id;
+
+            var currLoc = storage.getItem('loc');
+            var currPrice = storage.getItem('price')
 
             var apiAddress = address.split(' ').join('+');
             var html = "<div class = \'row\'> " +
                           "<div class = \'col-md-6\'> " +
-                            "<div class = \"col-md-9\">" +
+                            "<div class = \"col-sm-9\">" +
                               "<h3> " + address + " - " + price + "</h3> " +
                               "<h4>" + desc + "</h4> " +
                             "</div>" +
-                            "<div class = \"col-md-3\">" +
+                            "<div class = \"col-sm-3\">" +
                               "<a href=\"" + link +"\" class=\"btn btn-primary\" role=\"button\" target=\"_blank\">Link to Posting</a>" +
                             "</div>" +
                           "</div> " +
